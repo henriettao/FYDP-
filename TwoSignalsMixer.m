@@ -1,5 +1,5 @@
 function [X,A,S,Fs1,Fs2] = TwoSignalsMixer(Audio1,Audio2)
-% mixes two auido signals and returns mixing matrix 
+% mixes two auido signals and returns mixed audio 
     [S1,Fs1]=audioread(Audio1);
     [S2,Fs2]=audioread(Audio2);
     
@@ -13,7 +13,9 @@ function [X,A,S,Fs1,Fs2] = TwoSignalsMixer(Audio1,Audio2)
         A=0.2+0.8*rand(2); 
         A=diag(1./sum(A,2))*A;
     end 
-%   A = [0.340226776123987	0.659773223876013; 0.409257618338637	0.590742381661363];
+%  this value of A gives practical signal recording oftow audio inputs 
+% A = [0.340226776123987	0.659773223876013; 0.409257618338637	0.590742381661363];
+% returns the mixed audio as a 2xm matrix 
     X=A*S;
 
 end

@@ -1,5 +1,5 @@
 function [X,A,S,Fs1,Fs2] = TwoSignalsMixer(Audio1,Audio2)
-% mixes two auido signals and returns a .wav file 
+% mixes two auido signals and returns mixing matrix 
     [S1,Fs1]=audioread(Audio1);
     [S2,Fs2]=audioread(Audio2);
     

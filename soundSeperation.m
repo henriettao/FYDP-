@@ -1,6 +1,6 @@
-function soundSeperation(Audio1, Audio2)
-    Audio1= 'C1 2/C1-Henr.wav';
-    Audio2= 'C1 2/C1-Kyle.wav';
+function soundSeparation(Audio1, Audio2)
+    Audio1= 'Audio1.wav';
+    Audio2= 'Audio2.wav';
     [x1, Fs1] = audioread(Audio1);
     [x2, Fs2] = audioread(Audio2);
     m = size(x1,1); % size of each signal
@@ -9,7 +9,9 @@ function soundSeperation(Audio1, Audio2)
     S2= x2(1:L);
     n = 2; % Number of sound sources
     A = randn(n, n); %  Random 2 X 2 mixing matrix
-    x = A*[S1';S2']; % Mixed signals
+    S(1,:)= S1;
+    S(2,:)= S2;
+    x = A*S; % Mix the signals
     mx = sum(x, 2)/m; % supposed to be the mean; E{x}
     x = x - repmat(mx, 1, m); % x - E{x}
     for i = 1:n                      % This step is done
